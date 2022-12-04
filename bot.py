@@ -26,7 +26,7 @@ def run_discord_bot():
     # intents.members = True
     
     bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), intents=intents)    
-    general_text_channel_id = 696847976819064887
+    general_text_channel_id = config.CHANNEL_ID
     
     forbidden_words = ["χαμπο", "mpeite", "καρδαμη", "exoume", "εχουμε", "+1"]
     lovely_words = ["among", "αμονγκ"]
