@@ -2,6 +2,7 @@ import random
 import requests
 import json
 from forex_python.converter import CurrencyRates
+from random import shuffle
 
 def get_response(message: str) -> str:
     p_message = message.lower()
@@ -49,6 +50,13 @@ def get_coin_report():
     bitcoin_data = json_data["data"]
     return
     
+
+def get_teams(noMembers):
+    numbers = list(range(1, noMembers + 1))
+    shuffle(numbers)
+    teamA, teamB = numbers[:noMembers//2], numbers[noMembers//2:]
+    return teamA, teamB
+        
 
 
 def announce_football_schedule():

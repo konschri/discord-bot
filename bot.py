@@ -134,7 +134,15 @@ def run_discord_bot():
     async def bitcoin(ctx, currency):
         await ctx.send(responses.get_bitcoin_price(currency))
         
-        
+    
+    @bot.command()
+    async def teams(ctx):
+        voice_channel = bot.get_channel(806962595323445298)
+        noMembers = len(voice_channel.members)
+        print(noMembers)
+        await ctx.send(responses.get_teams(noMembers))
+    
+    
     goodMorningTime = datetime.time(hour=19) #Athens - utc+2
     @tasks.loop(time=goodMorningTime)
     async def scheduled_message(ctx):
