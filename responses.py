@@ -28,7 +28,7 @@ def get_bitcoin_price(currency):
         result = data["price"].split(".")[0]
     
         if currency == "USD":
-            return f"`The current price of bitcoin in {currency} is {round(result,2)}`"
+            return f"`The current price of bitcoin in {currency} is {round(float(result),2)}`"
         
         c = CurrencyRates()
         if currency == "EUR":
@@ -51,12 +51,11 @@ def get_coin_report():
     return
     
 
-def get_teams(noMembers):
-    numbers = list(range(1, noMembers + 1))
-    shuffle(numbers)
-    teamA, teamB = numbers[:noMembers//2], numbers[noMembers//2:]
-    return teamA, teamB
-        
+def get_teams(active_members):
+    shuffle(active_members)
+    teamA, teamB = active_members[:len(active_members)//2], active_members[len(active_members)//2:]
+    return f"`Team A consists of: {' - '.join(teamA)} \nTeam B consists of: {' - '.join(teamB)}`"
+
 
 
 def announce_football_schedule():

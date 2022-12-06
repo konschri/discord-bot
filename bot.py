@@ -137,10 +137,14 @@ def run_discord_bot():
     
     @bot.command()
     async def teams(ctx):
-        voice_channel = bot.get_channel(806962595323445298)
-        noMembers = len(voice_channel.members)
-        print(noMembers)
-        await ctx.send(responses.get_teams(noMembers))
+        voice_channel_keys = config.channel_ids
+        for key, value in voice_channel_keys.items():
+            voice_channel = bot.get_channel(value)
+            if voice_channel.members:
+                active_members = []
+                for member in voice_channel.members:
+                    active_members.append(member.name)
+                await ctx.send(responses.get_teams(active_members))
     
     
     goodMorningTime = datetime.time(hour=19) #Athens - utc+2
